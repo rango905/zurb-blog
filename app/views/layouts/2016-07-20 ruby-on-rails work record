@@ -1,0 +1,11 @@
+2016-07-20 ruby-on-rails work record
+
+1. 使用 string.first 功能在 index 界面规范显示 article 摘要
+
+2. 第一版 blog
+（1）top link
+ (2) support markdowns
+ (3) simple user check
+
+3. 增加单独的连接，新增 resume controller
+
