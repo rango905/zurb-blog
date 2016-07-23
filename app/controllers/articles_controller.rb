@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    @tags = KeywordTag.all
   end
 
   # GET /articles/1

@@ -26,4 +26,11 @@
 
 <br>
 
+<strong>Tags:</strong>
+<% @tags.each do |tag| %>
+  <td><%= tag.name  %></td> /
+<% end %>
+
+<br>
+
 <%= link_to 'New Article', new_article_path %>

@@ -11,11 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719094007) do
+ActiveRecord::Schema.define(version: 20160722084835) do
+
+  create_table "article_keyword_tagships", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "keyword_tag_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.string   "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "keyword_tags", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

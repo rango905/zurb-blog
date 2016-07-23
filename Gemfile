@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'sprockets', '3.6.3'
+
 gem 'therubyracer'
 gem 'bluecloth'
 gem 'zurb-foundation'
