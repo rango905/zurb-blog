@@ -16,9 +16,9 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.text.first(20) %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', article, class: "tiny radius button" %></td>
+        <td><%= link_to 'Edit', edit_article_path(article), class: "tiny radius button" %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: "Are you sure?" }, class: "tiny radius button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,5 +32,5 @@
 <% end %>
 
 <br>
-
-<%= link_to 'New Article', new_article_path %>
+<br>
+<%= link_to 'New Article', new_article_path, class: "tiny radius button" %>

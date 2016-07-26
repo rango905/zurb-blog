@@ -7,7 +7,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    if params[:keyword]
+      @articles = Article.where( [ "title like ? OR text like ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%" ] )
+    else
+      @articles = Article.all
+    end
     @tags = KeywordTag.all
   end
 
@@ -23,6 +27,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @tag = @article.keyword_tags.build
   end
 
   # POST /articles
@@ -65,7 +70,11 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def about_me
+  def add_tag
+    @ship = ArticleKeywordTagship.new(@article, @tag)
+    @ship.save
+
+    redirect_to back
   end
 
   private
@@ -76,6 +85,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :text)
+      params.require(:article).permit(:title, :text, :name, :article)
     end
 end

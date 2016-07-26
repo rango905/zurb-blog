@@ -5,7 +5,7 @@ gem 'sprockets', '3.6.3'
 gem 'therubyracer'
 gem 'bluecloth'
 gem 'zurb-foundation'
-gem 'coffee-script-source', '1.8.0'
+gem 'coffee-script-source', '~> 1.8.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.2'
 # Use sqlite3 as the database for Active Record

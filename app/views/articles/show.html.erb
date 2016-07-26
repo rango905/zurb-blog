@@ -5,6 +5,11 @@
   <h2><%= @article.title %></h2>
 </p>
 
+<strong>Tags:</strong>
+<% @article.keyword_tags.each do |tag| %>
+  <td><%= tag.name  %></td> /
+<% end %>
+
 <p>
   <%#strong>Text:</strong> %>
   <%= markdown(@article.text) %>

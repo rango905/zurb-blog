@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+        <td><%= link_to 'Show', tag, class: "tiny radius button" %></td>
+        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: "Are you sure?" }, class: "tiny radius button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

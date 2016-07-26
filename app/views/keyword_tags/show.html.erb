@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%#<strong>Title:</strong> %>
+  <h2><%= @tag.name %></h2>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tag.articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.text.first(20) %></td>
+        <td><%= link_to 'Show', article %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', keyword_tags_path %>
