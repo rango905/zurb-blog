@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   
   http_basic_authenticate_with name: "admin", password: "123456", except: [:index, :show]
 
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :add_tag]
 
   # GET /articles
   # GET /articles.json
@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @tag = @article.keyword_tags.build
+    #@article.keyword_tags.build
   end
 
   # POST /articles
@@ -71,11 +71,20 @@ class ArticlesController < ApplicationController
   end
 
   def add_tag
-    @ship = ArticleKeywordTagship.new(@article, @tag)
-    @ship.save
+    @tag = KeywordTag.where(name: params[:keyword_tags][:name]).take
 
-    redirect_to back
+    if @tag.nil?
+      @tag = KeywordTag.create(:name => params[:keyword_tags][:name])
+    end
+
+    @ship = ArticleKeywordTagship.new
+    @ship.update(:keyword_tag => @tag)
+    @ship.update(:article => @article)
+    @ship.save
+    #@article.keyword_tags.create(params[:name])
+    redirect_to :back
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -85,6 +94,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :text, :name, :article)
+      params.require(:article).permit(:title, :text, :name, :keyword_tags)
     end
 end

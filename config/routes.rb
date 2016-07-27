@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :articles
+  resources :articles do 
+    member do 
+      patch :add_tag
+    end
+  end
   resources :keyword_tags
   
   get "resume" => 'resume#index'

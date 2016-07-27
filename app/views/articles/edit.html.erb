@@ -1,6 +1,29 @@
 <h1>Editing Article</h1>
 
-<%= render 'form' %>
 
+
+<strong>Tags:</strong>
+<% @article.keyword_tags.each do |tag| %>
+  <td><%= tag.name  %></td>
+<% end %>
+
+<%#= form_tag keyword_tags_path(@article), :method => :post  do %>
+  <%#= text_field_tag "keyword" %>
+  <%#= submit_tag "Add tag" %>
+<%# end %>
+
+<%= form_for @article, :url => { :action => :add_tag } do |f| %>
+  <%= fields_for :keyword_tags do |t| %>
+      <%= t.text_field :name %>
+
+  <% end %>
+  <%= f.submit "Add tag" %>
+<% end %>
+<br>
+
+<br>
+<%#= params.inspect %>
+<%= render 'form' %>
+<br>
 <%= link_to 'Show', @article %> |
 <%= link_to 'Back', articles_path %>

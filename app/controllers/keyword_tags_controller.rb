@@ -1,3 +1,5 @@
+require 'logger'
+
 class KeywordTagsController < ApplicationController
   before_action :set_tag, only: [:show, :destroy]
 
@@ -7,18 +9,24 @@ class KeywordTagsController < ApplicationController
 
   def show
   end
+  
+  # GET /articles/new
+  def new
+  end
 
   def create
-    @tag = KeywordTag.find(params[:name])
+    @tag = KeywordTag.where(name: params[:keyword]).take
 
     if @tag.nil?
-      @tag = Article.new(params[:name])
+      @tag = KeywordTag.create(:name => params[:keyword])
     end
 
-    @ship = ArticleKeywordTagship.create(@article, @tag)
+    @ship = ArticleKeywordTagship.new
+    @ship.update(:keyword_tag => @tag)
+    @ship.update(:article => params[:article])
     @ship.save
-
-    redirect_to back
+    #@article.keyword_tags.create(@tag)
+    redirect_to :back
   end
 
   # DELETE /keyword_tags/1
@@ -38,6 +46,6 @@ class KeywordTagsController < ApplicationController
   end	
 
   def article_params
-    params.require(:keyword_tag).permit(:name, :article)
+    params.require(:keyword_tag).permit(:name, :article, :keyword)
   end
 end
