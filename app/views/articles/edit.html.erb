@@ -5,6 +5,7 @@
 <strong>Tags:</strong>
 <% @article.keyword_tags.each do |tag| %>
   <td><%= link_to tag.name, keyword_tag_path(tag) %></td>
+  <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: "Are you sure?" }, class: "tiny radius button" %></td>
 <% end %>
 
 <%#= form_tag keyword_tags_path(@article), :method => :post  do %>
@@ -25,5 +26,5 @@
 <%#= params.inspect %>
 <%= render 'form' %>
 <br>
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Show', @article, class: "tiny radius button" %>  
+<%= link_to 'Back', articles_path, class: "tiny radius button" %>

@@ -19,7 +19,7 @@
       <li>
         <%= form_tag articles_path, :method => :get do %>
           <%= text_field_tag "keyword" %>
-          <%= submit_tag "Search" %>
+          <%= submit_tag "Search", class: "tiny radius button" %>
         <% end %>
       </li>
       <li class="divider"></li>

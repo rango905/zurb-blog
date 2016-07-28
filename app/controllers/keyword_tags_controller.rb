@@ -34,7 +34,7 @@ class KeywordTagsController < ApplicationController
   def destroy
     @tag.destroy
     respond_to do |format|
-      format.html { redirect_to keyword_tags_url, notice: 'Keyword Tag was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Keyword Tag was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
