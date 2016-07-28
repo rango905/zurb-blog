@@ -13,8 +13,7 @@
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
-        <td><%= tag.name %></td>
-        <td><%= link_to 'Show', tag, class: "tiny radius button" %></td>
+        <td><%= link_to tag.name, keyword_tag_path(tag) %></td>
         <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: "Are you sure?" }, class: "tiny radius button" %></td>
       </tr>
     <% end %>

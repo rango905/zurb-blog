@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%#<strong>Title:</strong> %>
-  <h2><%= @tag.name %></h2>
+  <strong>Tags:</strong>
+  <h2><%= link_to @tag.name, keyword_tag_path(@tag) %></h2>
 </p>
 
 <table>
@@ -25,4 +25,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Back', keyword_tags_path %>
+<%= link_to 'Back', :back %>

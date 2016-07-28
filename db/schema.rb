@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722084835) do
+ActiveRecord::Schema.define(version: 20160727090506) do
 
   create_table "article_keyword_tagships", force: :cascade do |t|
     t.integer  "article_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160722084835) do
     t.string   "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "keyword"
   end
 
   create_table "keyword_tags", force: :cascade do |t|

@@ -28,7 +28,7 @@
 
 <strong>Tags:</strong>
 <% @tags.each do |tag| %>
-  <td><%= tag.name  %></td> /
+  <td><%= link_to tag.name, keyword_tag_path(tag) %></td>
 <% end %>
 
 <br>
