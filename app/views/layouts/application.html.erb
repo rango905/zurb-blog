@@ -18,8 +18,8 @@
       <li class="divider"></li>
       <li>
         <%= form_tag articles_path, :method => :get do %>
-          <%= text_field_tag "keyword" %>
-          <%= submit_tag "Search", class: "tiny radius button" %>
+          <%= text_field_tag :keyword %>
+          <%#= submit_tag "Search", class: "tiny radius button" %>
         <% end %>
       </li>
       <li class="divider"></li>
