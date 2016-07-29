@@ -4,7 +4,7 @@
 
 <strong>Tags:</strong>
 <% @article.keyword_tags.each do |tag| %>
-  <span class="alert label"><i class="fi-widget"></i><%= link_to tag.name, tag, method: :delete, data: { confirm: "Are you sure?" } %></span>
+  <span class="alert label"><%= link_to tag.name, del_tag_article_path(:keyword_tags_id => tag), method: :delete %></span>
   <%#= link_to 'Destroy', tag, method: :delete, data: { confirm: "Are you sure?" }, class: "tiny radius button" %>
 <% end %>
 <br />

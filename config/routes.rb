@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :articles do 
     member do 
-      patch :add_tag
+      patch  :add_tag
+      delete :del_tag
     end
   end
   resources :keyword_tags

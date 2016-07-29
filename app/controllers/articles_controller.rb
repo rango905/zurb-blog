@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   
   http_basic_authenticate_with name: "admin", password: "123456", except: [:index, :show]
 
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :add_tag]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :add_tag, :del_tag]
 
   # GET /articles
   # GET /articles.json
@@ -85,6 +85,21 @@ class ArticlesController < ApplicationController
     redirect_to :back
   end
 
+def del_tag
+  @tag = KeywordTag.find(params[:keyword_tags_id])
+
+  if @tag.article_keyword_tagships.count > 1
+    @ship = @tag.article_keyword_tagships.where( [ "article_id like ?", "%#{params[:id]}%" ] )
+    @tag.article_keyword_tagships.destroy(@ship)
+    redirect_to :back
+  else
+    @tag.destroy
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Keyword Tag was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -94,6 +109,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :text, :name, :keyword_tags)
+      params.require(:article).permit(:title, :text, :name, :keyword_tags, :keyword_tags_id)
     end
 end
