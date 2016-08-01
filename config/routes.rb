@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  resources :articles do 
-    member do 
-      patch  :add_tag
-      delete :del_tag
+  namespace :admin do
+    resources :articles do 
+      member do 
+        patch  :add_tag
+        delete :del_tag
+      end
     end
   end
+  
+  resources :articles 
   resources :keyword_tags
   
   get "resume" => 'resume#index'

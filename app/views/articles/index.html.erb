@@ -2,28 +2,9 @@
 
 <h1>Listing Articles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.text.first(20) %></td>
-        <td><%= link_to 'Show', article, class: "tiny radius button" %></td>
-        <td><%= link_to 'Edit', edit_article_path(article), class: "tiny radius button" %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: "Are you sure?" }, class: "tiny radius button" %></td>
-      </tr>
+      <h4><%= link_to article.title, article %></h4>
     <% end %>
-  </tbody>
-</table>
-
 <br>
 
 <strong>Tags:</strong>
@@ -31,6 +12,3 @@
   <td><%= link_to tag.name, keyword_tag_path(tag) %></td>
 <% end %>
 
-<br>
-<br>
-<%= link_to 'New Article', new_article_path, class: "tiny radius button" %>

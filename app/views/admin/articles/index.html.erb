@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.text.first(20) %></td>
+        <td><%= link_to 'Show', admin_article_path(article), class: "tiny radius button" %></td>
+        <td><%= link_to 'Edit', edit_admin_article_path(article), class: "tiny radius button" %></td>
+        <td><%= link_to 'Destroy', admin_article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class: "tiny radius button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<strong>Tags:</strong>
+<% @tags.each do |tag| %>
+  <td><%= link_to tag.name, keyword_tag_path(tag) %></td>
+<% end %>
+
+<br>
+<br>
+<%= link_to 'New Article', new_admin_article_path, class: "tiny radius button" %>
